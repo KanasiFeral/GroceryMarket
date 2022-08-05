@@ -14,119 +14,49 @@ namespace GroceryMarket.Classes
         // Configuration data
         private List<Product> _productsPrices;
         // Products codes
-        private List<string> _productCodes;
+        private string _order;
         // Logger for save info when something do wrong
         private readonly Logger _logger;
+        // ProductCode validation
+        private ProductCodeValidation _productCodeValidation;
+        // Calculation total price
+        private ProductPriceCalculation _productPriceCalculation;
         // Mapper to convert DTO model to internal model
         private readonly MapperBase<Product, ProductDto> _productMapper;
 
         public SaleTerminal()
         {
-            // Init log
-            _logger = LogManager.GetCurrentClassLogger();
-            // Init mapper
-            _productMapper = new ProductMapper();
             // Init product prices list
             _productsPrices = new List<Product>();
-            // Init product list
-            _productCodes = new List<string>();
+            // Init order
+            _order = "";
+            // Init log
+            _logger = LogManager.GetCurrentClassLogger();
+            // Init ProductCodeValidation
+            _productCodeValidation = new ProductCodeValidation();
+            // Init ProductCalculation
+            _productPriceCalculation = new ProductPriceCalculation();
+            // Init mapper
+            _productMapper = new ProductMapper();
+
         }
 
         public double CalculateTotal()
         {
             double total = 0;
 
-            if (_productCodes.Count == 0)
-            {
-                _logger.Info(ErrorCodes.PRODUCT_CODE_LIST_ARE_EMPTY_ERROR_MESSAGE);
-                return total;
-            }
+            // Calculating products without wholesale
+            total += _productPriceCalculation.CalculationWithoutWholesale(_productsPrices, _order);
 
-            // Calculate data without wholesale
-            foreach (var productCode in _productCodes)
-            {
-                // Get full info about this current product
-                var product = _productsPrices.Where(x => x.ProductCode == productCode).FirstOrDefault();
-                // If this product don't have sales for wholesale
-                if (!product.IsWholesale)
-                {
-                    total += product.Price;
-                }
-            }
-
-            // Get prices without wholesale
-            var withoutWholesale = _productsPrices.Where(s => !s.IsWholesale).Select(x => x.ProductCode);
-            // Remove all values that not having wholesale flag
-            foreach (var item in withoutWholesale)
-            {
-                _productCodes.RemoveAll(x => x == item);
-            }
-
-            // Final calculating with data with wholesale
-            foreach (var productCode in _productCodes.Distinct())
-            {
-                // Get full info about this current product
-                var product = _productsPrices.Where(x => x.ProductCode == productCode).FirstOrDefault();
-                // Getting count of product
-                var countItems = _productCodes.Where(x => x == product.ProductCode).Count();
-                // If item is wholesale, but only one
-                if (countItems == 1)
-                {
-                    total += product.Price;
-                    continue;
-                }
-                // If we can sell this item as wholesale
-                if (countItems % product.WholesaleCount == 0)
-                {
-                    total += product.WholesalePrice * (countItems / product.WholesaleCount);
-                }
-                else
-                {
-                    var unevenCount = (int)(countItems / product.WholesaleCount);
-
-                    total += unevenCount * product.WholesalePrice;
-
-                    var remainderCount = countItems - (unevenCount * product.WholesaleCount);
-
-                    total += remainderCount * product.Price;
-                }
-            }
+            // Calculating products with wholesale
+            total += _productPriceCalculation.CalculationWithWholesale(_productsPrices, _order);
 
             return total;
         }
 
         public bool Scan(string productCode)
         {
-            _productCodes = new List<string>();
-
-            if (string.IsNullOrEmpty(productCode))
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
-                return false;
-            }
-
-            if (_productsPrices == null || _productsPrices.Count() == 0)
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
-                return false;
-            }
-
-            var temp = new List<string>();
-            foreach (var code in productCode)
-            {
-                // Find product code in price list
-                if (!_productsPrices.Any(x => x.ProductCode == code.ToString()))
-                {
-                    _logger.Error(new Exception(), ErrorCodes.PRODUCT_CODE_NOT_FOUND_ERROR_MESSAGE);
-                    continue;
-                }
-
-                // If product code is correct, adding to the list
-                temp.Add(code.ToString());
-            }
-
-            // If product code is correct, adding to the list
-            _productCodes.AddRange(temp);
+           _order += _productCodeValidation.Scan(_productsPrices, productCode);
 
             return true;
         }

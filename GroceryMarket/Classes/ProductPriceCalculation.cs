@@ -1,15 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GroceryMarket.Interfaces;
 using GroceryMarket.Models;
+using NLog;
 
 namespace GroceryMarket.Classes
 {
-    public class ProductCalculation : ICalculation
+    public class ProductPriceCalculation : ICalculation
     {
+        // Logger for save info when something do wrong
+        private readonly Logger _logger;
+
+        public ProductPriceCalculation()
+        {
+            // Init log
+            _logger = LogManager.GetCurrentClassLogger();
+        }
+
         public double CalculationWithoutWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
+
+            if (string.IsNullOrEmpty(order))
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
+                return total;
+            }
+
+            if (productsPrices == null || productsPrices.Count() == 0)
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
+                return total;
+            }
 
             // Calculate data without wholesale
             foreach (var productCode in order)
@@ -29,6 +52,18 @@ namespace GroceryMarket.Classes
         public double CalculationWithWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
+
+            if (string.IsNullOrEmpty(order))
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
+                return total;
+            }
+
+            if (productsPrices == null || productsPrices.Count() == 0)
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
+                return total;
+            }
 
             // Final calculating with data with wholesale
             foreach (var productCode in order.Distinct())

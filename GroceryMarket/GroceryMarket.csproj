@@ -55,11 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ErrorCodes.cs" />
-    <Compile Include="Classes\ProductCalculation.cs" />
+    <Compile Include="Classes\ProductPriceCalculation.cs" />
+    <Compile Include="Classes\ProductCodeValidation.cs" />
     <Compile Include="Classes\SaleTerminal.cs" />
     <Compile Include="Interfaces\ICalculation.cs" />
     <Compile Include="Interfaces\IRepositoryConfig.cs" />
     <Compile Include="Interfaces\ISaleTerminal.cs" />
+    <Compile Include="Interfaces\IScan.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
     <Compile Include="Mapper\ProductMapper.cs" />
     <Compile Include="ModelsDTO\ProductDto.cs" />
