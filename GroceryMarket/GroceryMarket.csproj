@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ErrorCodes.cs" />
+    <Compile Include="Classes\ProductCalculation.cs" />
     <Compile Include="Classes\SaleTerminal.cs" />
+    <Compile Include="Interfaces\ICalculation.cs" />
     <Compile Include="Interfaces\IRepositoryConfig.cs" />
     <Compile Include="Interfaces\ISaleTerminal.cs" />
     <Compile Include="Mapper\MapperBase.cs" />

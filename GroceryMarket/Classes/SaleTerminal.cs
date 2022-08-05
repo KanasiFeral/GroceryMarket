@@ -22,14 +22,14 @@ namespace GroceryMarket.Classes
 
         public SaleTerminal()
         {
-            // Init list to saving production code
-            _productCodes = new List<string>();
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
             // Init mapper
             _productMapper = new ProductMapper();
             // Init product prices list
             _productsPrices = new List<Product>();
+            // Init product list
+            _productCodes = new List<string>();
         }
 
         public double CalculateTotal()
