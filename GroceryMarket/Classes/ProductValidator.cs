@@ -10,8 +10,8 @@ namespace GroceryMarket.Classes
 
         public void ValidatePrice(double price)
         {
-            // Checking that Price cannot be less or equal than 0
-            if (price <= 0)
+            // Checking that Price cannot be less than 0
+            if (price < 0)
             {
                 throw new Exception(ErrorCodes.PRICE_LENGHT_ERROR_MESSAGE);
             }
@@ -46,8 +46,8 @@ namespace GroceryMarket.Classes
 
         public void ValidateWholesaleCount(int wholesaleCount)
         {
-            // Checking that WholesaleCount cannot be less or equal than 0
-            if (wholesaleCount <= 0)
+            // Checking that WholesaleCount cannot be less than 0
+            if (wholesaleCount < 0)
             {
                 throw new Exception(ErrorCodes.WHOLESALE_COUNT_LENGHT_ERROR_MESSAGE);
             }
@@ -61,6 +61,12 @@ namespace GroceryMarket.Classes
 
         public void ValidateWholesalePrice(double wholesalePrice)
         {
+            // Checking that WholesaleCount cannot be less than 0
+            if (wholesalePrice < 0)
+            {
+                throw new Exception(ErrorCodes.WHOLESALE_LENGHT_ERROR_MESSAGE);
+            }
+
             // Checking that WholesalePrice cannot be more than 1m
             if (wholesalePrice > 999999)
             {
