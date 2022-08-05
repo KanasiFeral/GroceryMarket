@@ -39,10 +39,14 @@ namespace GroceryMarket.Classes
             {
                 // Get full info about this current product
                 var product = productsPrices.Where(x => x.ProductCode == productCode.ToString()).FirstOrDefault();
-                // If this product don't have sales for wholesale
-                if (!product.IsWholesale)
+                // If product code in the price list
+                if (product != null)
                 {
-                    total += product.Price;
+                    // If this product don't have sales for wholesale
+                    if (!product.IsWholesale)
+                    {
+                        total += product.Price;
+                    }
                 }
             }
 
@@ -70,31 +74,35 @@ namespace GroceryMarket.Classes
             {
                 // Get full info about this current product
                 var product = productsPrices.Where(x => x.ProductCode == productCode.ToString()).FirstOrDefault();
-                // If this product have sales for wholesale
-                if (product.IsWholesale)
+                // If product code in the price list
+                if (product != null)
                 {
-                    // Getting count of product
-                    var countItems = order.Where(x => x.ToString() == product.ProductCode).Count();
-                    // If item is wholesale, but only one
-                    if (countItems == 1)
+                    // If this product have sales for wholesale
+                    if (product.IsWholesale)
                     {
-                        total += product.Price;
-                        continue;
-                    }
-                    // If we can sell this item as wholesale
-                    if (countItems % product.WholesaleCount == 0)
-                    {
-                        total += product.WholesalePrice * (countItems / product.WholesaleCount);
-                    }
-                    else
-                    {
-                        var unevenCount = (int)(countItems / product.WholesaleCount);
+                        // Getting count of product
+                        var countItems = order.Where(x => x.ToString() == product.ProductCode).Count();
+                        // If item is wholesale, but only one
+                        if (countItems == 1)
+                        {
+                            total += product.Price;
+                            continue;
+                        }
+                        // If we can sell this item as wholesale
+                        if (countItems % product.WholesaleCount == 0)
+                        {
+                            total += product.WholesalePrice * (countItems / product.WholesaleCount);
+                        }
+                        else
+                        {
+                            var unevenCount = (int)(countItems / product.WholesaleCount);
 
-                        total += unevenCount * product.WholesalePrice;
+                            total += unevenCount * product.WholesalePrice;
 
-                        var remainderCount = countItems - (unevenCount * product.WholesaleCount);
+                            var remainderCount = countItems - (unevenCount * product.WholesaleCount);
 
-                        total += remainderCount * product.Price;
+                            total += remainderCount * product.Price;
+                        }
                     }
                 }
             }
