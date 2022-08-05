@@ -1,3 +1,5 @@
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.csproj.AssemblyReference.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -13,8 +15,6 @@ C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryM
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\bin\Debug\NLog.xml
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.csproj.AssemblyReference.cache
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.csproj.CopyComplete
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\UnitTests\obj\Debug\UnitTests.pdb

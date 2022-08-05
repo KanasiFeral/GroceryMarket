@@ -19,6 +19,6 @@
         public static readonly string WHOLESALE_COUNT_VALUE_ERROR_MESSAGE = "Wholesale count cannot be more than 1m";
 
         public static readonly string CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE = "Configuration data are empty";
-        
+
     }
 }
