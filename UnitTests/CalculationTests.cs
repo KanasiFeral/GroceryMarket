@@ -63,63 +63,63 @@ namespace UnitTests
         public void CalculationWithoutWholesaleNotZero()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreNotEqual(priceCalculation.CalculationWithoutWholesale(_products, "BB"), 0);
+            Assert.AreNotEqual(priceCalculation.CalculationWithoutWholesale(_products, "BB"), _resultZero);
         }
 
         [TestMethod]
         public void CalculationWithoutWholesaleWithNullOrder()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(_products, string.Empty), 0);
+            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(_products, string.Empty), _resultZero);
         }
 
         [TestMethod]
         public void CalculationWithoutWholesaleNullPrices()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(null, "AA"), 0);
+            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(null, "AA"), _resultZero);
         }
 
         [TestMethod]
         public void CalculationWithWholesaleNotZero()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreNotEqual(priceCalculation.CalculationWithWholesale(_products, "AA"), 0);
+            Assert.AreNotEqual(priceCalculation.CalculationWithWholesale(_products, "AA"), _resultZero);
         }
 
         [TestMethod]
         public void CalculationWithWholesaleWithNullOrder()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.CalculationWithWholesale(_products, string.Empty), 0);
+            Assert.AreEqual(priceCalculation.CalculationWithWholesale(_products, string.Empty), _resultZero);
         }
 
         [TestMethod]
         public void CalculationWithWholesaleWithNullPrices()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.CalculationWithWholesale(null, "AA"), 0);
+            Assert.AreEqual(priceCalculation.CalculationWithWholesale(null, "AA"), _resultZero);
         }
 
         [TestMethod]
         public void TotalCalculationNotZero()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreNotEqual(priceCalculation.TotalCalculation(_products, "ABCDABA"), 0);
+            Assert.AreNotEqual(priceCalculation.TotalCalculation(_products, "ABCDABA"), _resultZero);
         }
 
         [TestMethod]
         public void TotalCalculationNullOrder()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.TotalCalculation(_products, string.Empty), 0);
+            Assert.AreEqual(priceCalculation.TotalCalculation(_products, string.Empty), _resultZero);
         }
 
         [TestMethod]
         public void TotalCalculationNullPrices()
         {
             ProductPriceCalculation priceCalculation = new ProductPriceCalculation();
-            Assert.AreEqual(priceCalculation.TotalCalculation(null, "AA"), 0);
+            Assert.AreEqual(priceCalculation.TotalCalculation(null, "AA"), _resultZero);
         }
 
         [TestMethod]
