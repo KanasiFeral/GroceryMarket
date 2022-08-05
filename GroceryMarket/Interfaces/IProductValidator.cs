@@ -2,9 +2,9 @@
 {
     public interface IProductValidator
     {
-        bool ValidateProductCode(string productode);
-        bool ValidatePrice(double price);
-        bool ValidateWholesalePrice(double wholesalePrice);
-        bool ValidateWholesaleCount(int wholesaleCount);
+        void ValidateProductCode(string productode);
+        void ValidatePrice(double price);
+        void ValidateWholesalePrice(double wholesalePrice);
+        void ValidateWholesaleCount(int wholesaleCount);
     }
 }
