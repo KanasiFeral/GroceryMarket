@@ -43,7 +43,11 @@ namespace GroceryMarket.Classes
 
         public double CalculateTotal()
         {
-            return _productPriceCalculation.TotalCalculation(_productsPrices, _order);
+            var total = _productPriceCalculation.TotalCalculation(_productsPrices, _order);
+
+            _order = string.Empty;
+
+            return total;
         }
 
         public bool Scan(string productCode)
