@@ -1,0 +1,30 @@
+﻿<Products>
+	<Item>
+		<ProductCode>A</ProductCode>
+		<Price>1.25</Price>
+		<IsWholesale>true</IsWholesale>
+		<WholesalePrice>3.00</WholesalePrice>
+		<WholesaleCount>3</WholesaleCount>
+	</Item>
+	<Item>
+		<ProductCode>B</ProductCode>
+		<Price>4.25</Price>
+		<IsWholesale>false</IsWholesale>
+		<WholesalePrice></WholesalePrice>
+		<WholesaleCount></WholesaleCount>
+	</Item>
+	<Item>
+		<ProductCode>C</ProductCode>
+		<Price>1.00</Price>
+		<IsWholesale>true</IsWholesale>
+		<WholesalePrice>5.00</WholesalePrice>
+		<WholesaleCount>6</WholesaleCount>
+	</Item>
+	<Item>
+		<ProductCode>D</ProductCode>
+		<Price>0.75</Price>
+		<IsWholesale>false</IsWholesale>
+		<WholesalePrice></WholesalePrice>
+		<WholesaleCount></WholesaleCount>
+	</Item>
+</Products>
