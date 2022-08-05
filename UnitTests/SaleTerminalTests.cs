@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GroceryMarket.Classes;
-using GroceryMarket.Models;
+using GroceryMarket.ModelsDTO;
 
 namespace UnitTests
 {
@@ -14,27 +14,44 @@ namespace UnitTests
         private readonly double _resultABCD = 7.25;
         private readonly double _resultZero = 0;
 
-        private readonly IList<Product> _products = new List<Product>()
+        private readonly List<Product> _products = new List<Product>()
         {
             new Product()
-            {
-                ProductCode = "A",
-                Price = 1.25,
-                IsWholesale = true,
-                WholesalePrice = 3.00,
-                WholesaleCount = 3
+            {                    
+                ProductCode = "A",                    
+                Price = 1.25,                    
+                IsWholesale = true,                    
+                WholesalePrice = 3.00,                   
+                WholesaleCount = 3               
             },
-            new Product()
-            {
-                ProductCode = "B",
-                Price = 4.25,
-                IsWholesale = false,
-                WholesalePrice = 0,
-                WholesaleCount = 0
-            },
+            new Product()                
+            {                    
+                ProductCode = "B",                    
+                Price = 4.25,                    
+                IsWholesale = false,                    
+                WholesalePrice = 0.00,                   
+                WholesaleCount = 0                
+            },               
+            new Product()                
+            {                    
+                ProductCode = "C",                    
+                Price = 1.00,                    
+                IsWholesale = true,                    
+                WholesalePrice = 5.00,                    
+                WholesaleCount = 6                
+            }
         };
 
-        private readonly Product incorrectProduct = new Product()
+        private readonly Product _product = new Product() 
+        {
+            ProductCode = "D",
+            Price = 0.75,
+            IsWholesale = false,
+            WholesalePrice = 0.00,
+            WholesaleCount = 0
+        };
+
+        private readonly Product _incorrectProduct = new Product()
         {
             ProductCode = "H",
             Price = 8,
@@ -47,7 +64,7 @@ namespace UnitTests
         public void ScanCorrectProducteCode()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             var result = terminal.Scan(_products.FirstOrDefault().ProductCode);
             Assert.AreEqual(result, true);
         }
@@ -56,8 +73,8 @@ namespace UnitTests
         public void ScanIncorrectProducteCode()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
-            var result = terminal.Scan(incorrectProduct.ProductCode);
+            terminal.SetPricing(_products);
+            var result = terminal.Scan(_incorrectProduct.ProductCode);
             Assert.AreEqual(result, true);
         }
 
@@ -73,7 +90,7 @@ namespace UnitTests
         public void ScanNullProducteCode()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             var result = terminal.Scan(string.Empty);
             Assert.AreEqual(result, false);
         }
@@ -82,7 +99,7 @@ namespace UnitTests
         public void CalculateProducteCodeWithoutNullResult()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             terminal.Scan(_products[0].ProductCode);
             terminal.Scan(_products[1].ProductCode);
             Assert.AreNotEqual(terminal.CalculateTotal(), true);
@@ -100,7 +117,7 @@ namespace UnitTests
         public void CalculateProducteCodeWitABCDABA()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             terminal.Scan("ABCDABA");
             Assert.AreEqual(terminal.CalculateTotal(), _resultABCDABA);
         }
@@ -109,7 +126,7 @@ namespace UnitTests
         public void CalculateProducteCodeWitCCCCCCC()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             terminal.Scan("CCCCCCC");
             Assert.AreEqual(terminal.CalculateTotal(), _resultCCCCCCC);
         }
@@ -118,7 +135,7 @@ namespace UnitTests
         public void CalculateProducteCodeWitABCD()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing();
+            terminal.SetPricing(_products);
             terminal.Scan("ABCD");
             Assert.AreEqual(terminal.CalculateTotal(), _resultABCD);
         }
@@ -127,7 +144,7 @@ namespace UnitTests
         public void SetPricing()
         {
             SaleTerminal terminal = new SaleTerminal();
-            Assert.AreEqual(terminal.SetPricing(), true);
+            Assert.AreEqual(terminal.SetPricing(_products), true);
         }
     }
 }

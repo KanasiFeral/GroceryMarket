@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GroceryMarket.Interfaces;
 using GroceryMarket.Models;
+using ProductDTO = GroceryMarket.ModelsDTO.Product;
 using NLog;
 
 namespace GroceryMarket.Classes
@@ -127,20 +128,22 @@ namespace GroceryMarket.Classes
             return true;
         }
 
-        public bool SetPricing()
+        public bool SetPricing(ProductDTO product)
         {
-            try
+            if (product == null)
             {
-                // Reading products praces
-                _productsPrices = _config.Read<Product>();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
+                _logger.Info(ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
                 return false;
             }
 
-            if (_productsPrices == null || _productsPrices.Count == 0)
+
+
+            return true;
+        }
+
+        public bool SetPricing(List<ProductDTO> products)
+        {
+            if (products == null || products.Count() <= 0)
             {
                 _logger.Info(ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
                 return false;
