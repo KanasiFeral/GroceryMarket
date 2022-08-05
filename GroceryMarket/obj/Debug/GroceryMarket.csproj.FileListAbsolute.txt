@@ -1,15 +1,7 @@
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.exe.config
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.exe
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.pdb
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\NLog.dll
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\NLog.xml
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.AssemblyReference.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.SuggestedBindingRedirects.cache
