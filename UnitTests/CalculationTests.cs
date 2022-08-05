@@ -50,15 +50,6 @@ namespace UnitTests
             }
         };
 
-        private readonly Product _incorrectProduct = new Product()
-        {
-            ProductCode = "H",
-            Price = 8,
-            IsWholesale = false,
-            WholesalePrice = 0,
-            WholesaleCount = 0
-        };
-
         [TestMethod]
         public void CalculationWithoutWholesaleNotZero()
         {
