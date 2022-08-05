@@ -37,7 +37,7 @@ namespace GroceryMarket.Classes
             foreach (var productCode in order)
             {
                 // Find product code in price list
-                if (!productsPrices.Any(x => x.ProductCode == productCode.ToString()))
+                if (productsPrices.Any(x => x.ProductCode == productCode.ToString()))
                 {
                     // Adding product code to result value
                     result += productCode.ToString();

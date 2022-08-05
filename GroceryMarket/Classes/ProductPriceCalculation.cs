@@ -38,7 +38,7 @@ namespace GroceryMarket.Classes
             foreach (var productCode in order)
             {
                 // Get full info about this current product
-                var product = productsPrices.Where(x => x.ProductCode == order).FirstOrDefault();
+                var product = productsPrices.Where(x => x.ProductCode == productCode.ToString()).FirstOrDefault();
                 // If this product don't have sales for wholesale
                 if (!product.IsWholesale)
                 {
@@ -98,6 +98,19 @@ namespace GroceryMarket.Classes
                     }
                 }
             }
+
+            return total;
+        }
+
+        public double TotalCalculation(List<Product> productsPrices, string order)
+        {
+            var total = 0.0;
+
+            // Calculating products without wholesale
+            total += CalculationWithoutWholesale(productsPrices, order);
+
+            // Calculating products with wholesale
+            total += CalculationWithWholesale(productsPrices, order);
 
             return total;
         }

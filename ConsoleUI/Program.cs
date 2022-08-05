@@ -51,7 +51,7 @@ namespace ConsoleUI
             terminal.SetPricing(product);
             terminal.SetPricing(products);           
 
-            terminal.Scan("ABCDABA");
+            terminal.Scan("ABCEDABA");
             Console.WriteLine($"Total price: {terminal.CalculateTotal()}");
 
             terminal.Scan("CCCCCCC");

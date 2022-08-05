@@ -43,15 +43,7 @@ namespace GroceryMarket.Classes
 
         public double CalculateTotal()
         {
-            double total = 0;
-
-            // Calculating products without wholesale
-            total += _productPriceCalculation.CalculationWithoutWholesale(_productsPrices, _order);
-
-            // Calculating products with wholesale
-            total += _productPriceCalculation.CalculationWithWholesale(_productsPrices, _order);
-
-            return total;
+            return _productPriceCalculation.TotalCalculation(_productsPrices, _order);
         }
 
         public bool Scan(string productCode)
