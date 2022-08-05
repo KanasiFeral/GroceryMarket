@@ -1,6 +1,3 @@
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\ConsoleUI.exe.config
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\ConsoleUI.exe
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\ConsoleUI.pdb
@@ -9,6 +6,9 @@ C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryM
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\GroceryMarket.pdb
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\GroceryMarket.exe.config
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\bin\Debug\NLog.xml
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.csproj.CopyComplete
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.exe
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\ConsoleUI\obj\Debug\ConsoleUI.pdb

@@ -1,11 +1,11 @@
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.AssemblyReference.cache
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.SuggestedBindingRedirects.cache
-C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.exe.config
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.exe
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\GroceryMarket.pdb
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\NLog.dll
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\bin\Debug\NLog.xml
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.AssemblyReference.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.SuggestedBindingRedirects.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.CoreCompileInputs.cache
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.csproj.CopyComplete
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.exe
 C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarket\obj\Debug\GroceryMarket.pdb

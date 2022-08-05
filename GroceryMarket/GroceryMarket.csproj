@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,7 +59,9 @@
     <Compile Include="Classes\SaleTerminal.cs" />
     <Compile Include="Interfaces\IRepositoryConfig.cs" />
     <Compile Include="Interfaces\ISaleTerminal.cs" />
-    <Compile Include="ModelsDTO\Product.cs" />
+    <Compile Include="Mapper\MapperBase.cs" />
+    <Compile Include="Mapper\ProductMapper.cs" />
+    <Compile Include="ModelsDTO\ProductDto.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +70,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapper\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

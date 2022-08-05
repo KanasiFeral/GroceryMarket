@@ -1,6 +1,6 @@
 ﻿namespace GroceryMarket.ModelsDTO
 {
-    public class Product
+    public class ProductDto
     {
         public string ProductCode { get; set; }
         public double Price { get; set; }

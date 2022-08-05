@@ -14,9 +14,9 @@ namespace UnitTests
         private readonly double _resultABCD = 7.25;
         private readonly double _resultZero = 0;
 
-        private readonly List<Product> _products = new List<Product>()
+        private readonly List<ProductDto> _products = new List<ProductDto>()
         {
-            new Product()
+            new ProductDto()
             {                    
                 ProductCode = "A",                    
                 Price = 1.25,                    
@@ -24,7 +24,7 @@ namespace UnitTests
                 WholesalePrice = 3.00,                   
                 WholesaleCount = 3               
             },
-            new Product()                
+            new ProductDto()                
             {                    
                 ProductCode = "B",                    
                 Price = 4.25,                    
@@ -32,7 +32,7 @@ namespace UnitTests
                 WholesalePrice = 0.00,                   
                 WholesaleCount = 0                
             },               
-            new Product()                
+            new ProductDto()                
             {                    
                 ProductCode = "C",                    
                 Price = 1.00,                    
@@ -42,7 +42,7 @@ namespace UnitTests
             }
         };
 
-        private readonly Product _product = new Product() 
+        private readonly ProductDto _product = new ProductDto() 
         {
             ProductCode = "D",
             Price = 0.75,
@@ -51,7 +51,7 @@ namespace UnitTests
             WholesaleCount = 0
         };
 
-        private readonly Product _incorrectProduct = new Product()
+        private readonly ProductDto _incorrectProduct = new ProductDto()
         {
             ProductCode = "H",
             Price = 8,

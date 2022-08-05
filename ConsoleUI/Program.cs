@@ -9,9 +9,9 @@ namespace ConsoleUI
     {
         static void Main()
         {
-            List<Product> products = new List<Product>()
+            List<ProductDto> products = new List<ProductDto>()
             {
-                new Product()
+                new ProductDto()
                 {
                     ProductCode = "A",
                     Price = 1.25,
@@ -19,7 +19,7 @@ namespace ConsoleUI
                     WholesalePrice = 3.00,
                     WholesaleCount = 3                    
                 },
-                new Product()
+                new ProductDto()
                 {
                     ProductCode = "B",
                     Price = 4.25,
@@ -27,7 +27,7 @@ namespace ConsoleUI
                     WholesalePrice = 0.00,
                     WholesaleCount = 0                    
                 },
-                new Product()
+                new ProductDto()
                 {
                     ProductCode = "C",
                     Price = 1.00,
@@ -37,7 +37,7 @@ namespace ConsoleUI
                 }
             };
 
-            Product product = new Product()
+            ProductDto product = new ProductDto()
             {
                 ProductCode = "D",
                 Price = 0.75,

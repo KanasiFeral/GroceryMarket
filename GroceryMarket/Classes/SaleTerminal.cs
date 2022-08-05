@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using GroceryMarket.Interfaces;
+using GroceryMarket.Mapper;
 using GroceryMarket.Models;
-using ProductDTO = GroceryMarket.ModelsDTO.Product;
+using GroceryMarket.ModelsDTO;
 using NLog;
 
 namespace GroceryMarket.Classes
@@ -13,11 +14,13 @@ namespace GroceryMarket.Classes
         // Universal interface for getting config data: xml, file, database and etc.
         private readonly IRepositoryConfig _config;
         // Configuration data
-        private IList<Product> _productsPrices;
+        private List<Product> _productsPrices;
         // Products codes
-        private IList<string> _productCodes;
+        private List<string> _productCodes;
         // Logger for save info when something do wrong
         private readonly Logger _logger;
+        // Mapper to convert DTO model to internal model
+        private readonly MapperBase<Product, ProductDto> _productMapper;
 
         public SaleTerminal()
         {
@@ -27,6 +30,8 @@ namespace GroceryMarket.Classes
             _productCodes = new List<string>();
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
+            // Init mapper
+            _productMapper = new ProductMapper();
         }
 
         public double CalculateTotal()
@@ -56,7 +61,7 @@ namespace GroceryMarket.Classes
             // Remove all values that not having wholesale flag
             foreach (var item in withoutWholesale)
             {
-                ((List<string>)_productCodes).RemoveAll(x => x == item);
+                _productCodes.RemoveAll(x => x == item);
             }
 
             // Final calculating with data with wholesale
@@ -112,7 +117,7 @@ namespace GroceryMarket.Classes
             foreach (var code in productCode)
             {
                 // Find product code in price list
-                if (!((List<Product>)_productsPrices).Any(x => x.ProductCode == code.ToString()))
+                if (!_productsPrices.Any(x => x.ProductCode == code.ToString()))
                 {
                     _logger.Error(new Exception(), ErrorCodes.PRODUCT_CODE_NOT_FOUND_ERROR_MESSAGE);
                     continue;
@@ -123,12 +128,12 @@ namespace GroceryMarket.Classes
             }
 
             // If product code is correct, adding to the list
-            ((List<string>)_productCodes).AddRange(temp);
+            _productCodes.AddRange(temp);
 
             return true;
         }
 
-        public bool SetPricing(ProductDTO product)
+        public bool SetPricing(ProductDto product)
         {
             if (product == null)
             {
@@ -136,17 +141,22 @@ namespace GroceryMarket.Classes
                 return false;
             }
 
-
+            _productsPrices.Add(_productMapper.Map(product));
 
             return true;
         }
 
-        public bool SetPricing(List<ProductDTO> products)
+        public bool SetPricing(List<ProductDto> products)
         {
             if (products == null || products.Count() <= 0)
             {
                 _logger.Info(ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
                 return false;
+            }
+
+            foreach (var product in products)
+            {
+                _productsPrices.Add(_productMapper.Map(product));
             }
 
             return true;
