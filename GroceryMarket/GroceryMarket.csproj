@@ -61,6 +61,7 @@
     <Compile Include="Classes\SaleTerminal.cs" />
     <Compile Include="Interfaces\ICalculation.cs" />
     <Compile Include="Interfaces\IProductValidator.cs" />
+    <Compile Include="Interfaces\IRepositoryConfig.cs" />
     <Compile Include="Interfaces\ISaleTerminal.cs" />
     <Compile Include="Interfaces\IScan.cs" />
     <Compile Include="Mapper\MapperBase.cs" />
