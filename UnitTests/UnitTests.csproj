@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleTerminalTests.cs" />
-    <Compile Include="XMLConfigReaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

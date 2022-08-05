@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ErrorCodes.cs" />
-    <Compile Include="Classes\XMLConfigReader.cs" />
     <Compile Include="Classes\SaleTerminal.cs" />
     <Compile Include="Interfaces\IRepositoryConfig.cs" />
     <Compile Include="Interfaces\ISaleTerminal.cs" />

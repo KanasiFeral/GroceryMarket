@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using GroceryMarket.Models;
 using GroceryMarket.Interfaces;
 
-namespace GroceryMarket.Classes
+namespace ConsoleUI
 {
     public class XMLConfigReader : IRepositoryConfig
-    { 
+    {
         // Path to physical config file in the project. Can be change e.g. to app.config
-        private readonly string _path = @"..\..\Config\Products.xml";
+        private readonly string _path = @"Config\Products.xml";
         private readonly IList<Product> _products;
 
         public XMLConfigReader()
@@ -28,10 +28,10 @@ namespace GroceryMarket.Classes
             {
                 return null;
             }
-            
+
             // Moving to structure nodes with data
             XmlNodeList nodeList = doc.SelectNodes("/Products/Item");
-            
+
             foreach (XmlNode node in nodeList)
             {
                 Product product = new Product();

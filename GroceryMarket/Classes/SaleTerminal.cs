@@ -11,8 +11,6 @@ namespace GroceryMarket.Classes
 {
     public class SaleTerminal : ISaleTerminal
     {
-        // Universal interface for getting config data: xml, file, database and etc.
-        private readonly IRepositoryConfig _config;
         // Configuration data
         private List<Product> _productsPrices;
         // Products codes
@@ -24,14 +22,14 @@ namespace GroceryMarket.Classes
 
         public SaleTerminal()
         {
-            // Using XML class to read config. Can be change for another one
-            _config = new XMLConfigReader();
             // Init list to saving production code
             _productCodes = new List<string>();
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
             // Init mapper
             _productMapper = new ProductMapper();
+            // Init product prices list
+            _productsPrices = new List<Product>();
         }
 
         public double CalculateTotal()

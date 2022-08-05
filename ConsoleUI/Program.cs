@@ -48,8 +48,8 @@ namespace ConsoleUI
 
             SaleTerminal terminal = new SaleTerminal();
 
-            terminal.SetPricing(products);
             terminal.SetPricing(product);
+            terminal.SetPricing(products);           
 
             terminal.Scan("ABCDABA");
             Console.WriteLine($"Total price: {terminal.CalculateTotal()}");
