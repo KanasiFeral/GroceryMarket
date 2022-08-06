@@ -53,6 +53,7 @@
     <Compile Include="ProductCodeValidationTests.cs" />
     <Compile Include="ProductValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleTerminalTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

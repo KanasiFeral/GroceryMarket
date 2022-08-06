@@ -54,6 +54,11 @@ namespace GroceryMarket.Classes
         {
            _order += _productCodeValidation.Scan(_productsPrices, productCode);
 
+            if (string.IsNullOrEmpty(_order))
+            {
+                return false;
+            }
+
             return true;
         }
 
