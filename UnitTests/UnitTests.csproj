@@ -49,7 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculationTests.cs" />
+    <Compile Include="ProductPriceCalculationTests.cs" />
     <Compile Include="InitDataRepository.cs" />
     <Compile Include="ProductCodeValidationTests.cs" />
     <Compile Include="ProductValidatorTests.cs" />

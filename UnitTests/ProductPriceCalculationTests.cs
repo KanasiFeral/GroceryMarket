@@ -4,11 +4,11 @@ using GroceryMarket.Classes;
 namespace UnitTests
 {
     [TestClass]
-    public class CalculationTests
+    public class ProductPriceCalculationTests
     {
         private readonly InitDataRepository _initDataRepository;
 
-        public CalculationTests()
+        public ProductPriceCalculationTests()
         {
             _initDataRepository = new InitDataRepository();
         }
