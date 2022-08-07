@@ -1,39 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GroceryMarket.Classes;
-using GroceryMarket.Models;
-
 
 namespace UnitTests
 {
     [TestClass]
     public class ProductValidatorTests
     {
-        Product IncorrectProductWithNullData = new Product()
-        {
-            ProductCode = string.Empty,
-            Price = -1,
-            IsWholesale = true,
-            WholesalePrice = -1,
-            WholesaleCount = -1
-        };
+        private readonly InitDataRepository _initDataRepository;
 
-        Product IncorrectProductWithIncorrectData = new Product()
+        public ProductValidatorTests()
         {
-            ProductCode = "ЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ",
-            Price = 1000000000,
-            IsWholesale = true,
-            WholesalePrice = 1000000000,
-            WholesaleCount = 1000000000
-        };
+            _initDataRepository = new InitDataRepository();
+        }
 
         [TestMethod]
         [ExpectedException(typeof(Exception), "ProductCode cannot be empty")]
         public void IsProductCodeEmptyError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(IncorrectProductWithNullData.ProductCode);
+            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode);
         }
 
         [TestMethod]
@@ -41,7 +27,7 @@ namespace UnitTests
         public void IsProductCodeLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(IncorrectProductWithIncorrectData.ProductCode);
+            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithIncorrectData.ProductCode);
         }
 
         [TestMethod]
@@ -49,7 +35,7 @@ namespace UnitTests
         public void IsProductCodeLatinLettersError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(IncorrectProductWithNullData.ProductCode);
+            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode);
         }
 
         [TestMethod]
@@ -57,7 +43,7 @@ namespace UnitTests
         public void IsPriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithNullData.Price);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.Price);
         }
 
         [TestMethod]
@@ -65,7 +51,7 @@ namespace UnitTests
         public void IsPriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithIncorrectData.Price);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.Price);
         }
 
         [TestMethod]
@@ -73,7 +59,7 @@ namespace UnitTests
         public void WholesaleCountLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithNullData.WholesaleCount);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.WholesaleCount);
         }
 
         [TestMethod]
@@ -81,7 +67,7 @@ namespace UnitTests
         public void WholesaleCountValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithIncorrectData.WholesaleCount);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesaleCount);
         }
 
         [TestMethod]
@@ -89,7 +75,7 @@ namespace UnitTests
         public void WholesalePriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithNullData.WholesalePrice);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.WholesalePrice);
         }
 
         [TestMethod]
@@ -97,7 +83,7 @@ namespace UnitTests
         public void WholesalePriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(IncorrectProductWithIncorrectData.WholesalePrice);
+            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesalePrice);
         }
     }
 }

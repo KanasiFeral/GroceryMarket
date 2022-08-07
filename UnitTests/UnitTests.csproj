@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculationTests.cs" />
+    <Compile Include="InitDataRepository.cs" />
     <Compile Include="ProductCodeValidationTests.cs" />
     <Compile Include="ProductValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

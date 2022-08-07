@@ -8,59 +8,25 @@ namespace UnitTests
     [TestClass]
     public class SaleTerminalTests
     {
-        private readonly List<ProductDto> _products = new List<ProductDto>()
+        private readonly InitDataRepository _initDataRepository;
+
+        public SaleTerminalTests()
         {
-            new ProductDto()
-            {
-                ProductCode = "A",
-                Price = 1.25,
-                IsWholesale = true,
-                WholesalePrice = 3.00,
-                WholesaleCount = 3
-            },
-            new ProductDto()
-            {
-                ProductCode = "B",
-                Price = 4.25,
-                IsWholesale = false,
-                WholesalePrice = 0.00,
-                WholesaleCount = 0
-            },
-            new ProductDto()
-            {
-                ProductCode = "C",
-                Price = 1.00,
-                IsWholesale = true,
-                WholesalePrice = 5.00,
-                WholesaleCount = 6
-            }
-        };
-        private readonly ProductDto _product = new ProductDto()
-        {
-            ProductCode = "D",
-            Price = 0.75,
-            IsWholesale = false,
-            WholesalePrice = 0.00,
-            WholesaleCount = 0
-        };
-        private readonly string _orderABCDABA = "ABCDABA";
-        private readonly string _orderCCCCCCC = "CCCCCCC";
-        private readonly string _orderHHH = "HHH";
-        private readonly double _resultCCCCCCC = 6.00;
-        private readonly double _resultZero = 0;
+            _initDataRepository = new InitDataRepository();
+        }
 
         [TestMethod]
         public void SetPricingReturnTrueWithProductsList()
         {
             SaleTerminal terminal = new SaleTerminal();
-            Assert.AreEqual(terminal.SetPricing(_products), true);
+            Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDtos), true);
         }
 
         [TestMethod]
         public void SetPricingReturnTrueWithSingleProduct()
         {
             SaleTerminal terminal = new SaleTerminal();
-            Assert.AreEqual(terminal.SetPricing(_product), true);
+            Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDto), true);
         }
 
         [TestMethod]
@@ -74,15 +40,15 @@ namespace UnitTests
         public void ScanWorkingFine()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing(_products);
-            Assert.AreEqual(terminal.Scan(_orderABCDABA), true);
+            terminal.SetPricing(_initDataRepository.ProductDtos);
+            Assert.AreEqual(terminal.Scan(_initDataRepository.OrderABCDABA), true);
         }
 
         [TestMethod]
         public void ScanReturnNullScanValue()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing(_products);
+            terminal.SetPricing(_initDataRepository.ProductDtos);
             Assert.AreEqual(terminal.Scan(string.Empty), false);
         }
 
@@ -90,26 +56,26 @@ namespace UnitTests
         public void ScanReturnNullWithIncorrectOrder()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing(_products);
-            Assert.AreEqual(terminal.Scan(_orderHHH), false);
+            terminal.SetPricing(_initDataRepository.ProductDtos);
+            Assert.AreEqual(terminal.Scan(_initDataRepository.OrderHHH), false);
         }
 
         [TestMethod]
         public void CalculateTotalWorkingFine()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing(_products);
-            terminal.Scan(_orderCCCCCCC);
-            Assert.AreEqual(terminal.CalculateTotal(), _resultCCCCCCC);
+            terminal.SetPricing(_initDataRepository.ProductDtos);
+            terminal.Scan(_initDataRepository.OrderCCCCCCC);
+            Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
         }
 
         [TestMethod]
         public void CalculateTotalReturnZero()
         {
             SaleTerminal terminal = new SaleTerminal();
-            terminal.SetPricing(_products);
-            terminal.Scan(_orderHHH);
-            Assert.AreEqual(terminal.CalculateTotal(), _resultZero);
+            terminal.SetPricing(_initDataRepository.ProductDtos);
+            terminal.Scan(_initDataRepository.OrderHHH);
+            Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultZero);
         }
     }
 }
