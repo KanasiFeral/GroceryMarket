@@ -13,12 +13,12 @@ namespace GroceryMarketAPI.Classes
         private string _order;
         private readonly Logger _logger;
         private OrderScan _productCodeValidation;
-        private readonly ProductPriceCalculator _productPriceCalculation;
+        private readonly PriceCalculator _productPriceCalculation;
         private readonly MapperBase<Product, ProductDto> _productMapper;
         private readonly MapperBase<Discount, DiscountDto> _discountMapper;
 
         public SaleTerminal(OrderScan orderScan, 
-            ProductPriceCalculator productPriceCalculator, 
+            PriceCalculator productPriceCalculator, 
             ProductMapper productMapper,
             DiscountMapper discountMapper)
         {

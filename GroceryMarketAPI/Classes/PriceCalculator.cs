@@ -4,12 +4,12 @@ using NLog;
 
 namespace GroceryMarketAPI.Classes
 {
-    public class ProductPriceCalculator : ICalculator
+    public class PriceCalculator : IPriceCalculator
     {
         // Logger for save info when something do wrong
         private readonly Logger _logger;
 
-        public ProductPriceCalculator()
+        public PriceCalculator()
         {
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
@@ -68,7 +68,7 @@ namespace GroceryMarketAPI.Classes
                         }
                         else
                         {
-                            var unevenCount = (int)(countItems / product.Discount.WholesaleCount);
+                            var unevenCount = countItems / product.Discount.WholesaleCount;
 
                             total += unevenCount * product.Discount.WholesalePrice;
 

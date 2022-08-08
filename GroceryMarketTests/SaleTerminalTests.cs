@@ -19,7 +19,7 @@ namespace GroceryMarketTests
         public void SetPricingReturnTrueWithProductsList()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),    
-                new ProductPriceCalculator(),    
+                new PriceCalculator(),    
                 new ProductMapper(),    
                 new DiscountMapper()
             );
@@ -30,7 +30,7 @@ namespace GroceryMarketTests
         public void SetPricingReturnTrueWithSingleProduct()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -41,7 +41,7 @@ namespace GroceryMarketTests
         public void SetPricingReturnFalseWithNullValue()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -52,7 +52,7 @@ namespace GroceryMarketTests
         public void ScanWorkingFine()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -64,7 +64,7 @@ namespace GroceryMarketTests
         public void ScanReturnNullScanValue()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -76,7 +76,7 @@ namespace GroceryMarketTests
         public void ScanReturnNullWithIncorrectOrder()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -88,7 +88,7 @@ namespace GroceryMarketTests
         public void CalculateTotalWorkingFine()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );
@@ -101,7 +101,7 @@ namespace GroceryMarketTests
         public void CalculateTotalReturnZero()
         {
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new ProductPriceCalculator(),
+                new PriceCalculator(),
                 new ProductMapper(),
                 new DiscountMapper()
             );

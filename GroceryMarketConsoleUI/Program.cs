@@ -46,7 +46,7 @@ ProductDto product = new()
 
 SaleTerminal terminal = new(
     new OrderScan(), 
-    new ProductPriceCalculator(), 
+    new PriceCalculator(), 
     new ProductMapper(), 
     new DiscountMapper()
 );

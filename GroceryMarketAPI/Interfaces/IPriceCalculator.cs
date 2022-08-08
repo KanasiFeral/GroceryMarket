@@ -2,7 +2,7 @@
 
 namespace GroceryMarketAPI.Interfaces
 {
-    public interface ICalculator
+    public interface IPriceCalculator
     {
         double TotalCalculation(List<Product> productsPrices, string order);
     }
