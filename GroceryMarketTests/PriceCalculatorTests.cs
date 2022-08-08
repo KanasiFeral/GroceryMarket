@@ -4,11 +4,11 @@ using GroceryMarketAPI.Classes;
 namespace GroceryMarketTests
 {
     [TestClass]
-    public class ProductPriceCalculationTests
+    public class PriceCalculatorTests
     {
         private readonly InitDataRepository _initDataRepository;
 
-        public ProductPriceCalculationTests()
+        public PriceCalculatorTests()
         {
             _initDataRepository = new InitDataRepository();
         }

@@ -8,8 +8,8 @@ namespace GroceryMarketAPI.Classes
 {
     public class SaleTerminal : ISaleTerminal
     {
-        private List<Product> _productsPrices;
-        private List<Discount> _productsDiscounts;
+        private List<Product> _productPrices;
+        private List<Discount> _productDiscounts;
         private string _order;
         private readonly Logger _logger;
         private OrderScan _productCodeValidation;
@@ -22,8 +22,8 @@ namespace GroceryMarketAPI.Classes
             ProductMapper productMapper,
             DiscountMapper discountMapper)
         {
-            _productsPrices = new List<Product>();
-            _productsDiscounts = new List<Discount>();
+            _productPrices = new List<Product>();
+            _productDiscounts = new List<Discount>();
             _order = "";
             _logger = LogManager.GetCurrentClassLogger();
 
@@ -35,14 +35,14 @@ namespace GroceryMarketAPI.Classes
 
         public double CalculateTotal()
         {
-            var total = _productPriceCalculation.TotalCalculation(_productsPrices, _order);
+            var total = _productPriceCalculation.TotalCalculation(_productPrices, _order);
             _order = string.Empty;
             return total;
         }
 
         public bool Scan(string productCode)
         {
-           _order += _productCodeValidation.Scan(_productsPrices, productCode);
+           _order += _productCodeValidation.Scan(_productPrices, productCode);
 
             if (string.IsNullOrEmpty(_order))
             {
@@ -60,11 +60,11 @@ namespace GroceryMarketAPI.Classes
                 return false;
             }
 
-            _productsPrices.Add(_productMapper.Map(product));
+            _productPrices.Add(_productMapper.Map(product));
 
             if (discount != null)
             {
-                _productsDiscounts.Add(_discountMapper.Map(discount));
+                _productDiscounts.Add(_discountMapper.Map(discount));
             }
 
             SetDiscount();
@@ -82,14 +82,14 @@ namespace GroceryMarketAPI.Classes
 
             foreach (var product in products)
             {
-                _productsPrices.Add(_productMapper.Map(product));
+                _productPrices.Add(_productMapper.Map(product));
             }
 
             if (discounts != null && discounts.Count() > 0)
             {
                 foreach (var discount in discounts)
                 {
-                    _productsDiscounts.Add(_discountMapper.Map(discount));
+                    _productDiscounts.Add(_discountMapper.Map(discount));
                 }               
             }
 
@@ -100,11 +100,11 @@ namespace GroceryMarketAPI.Classes
 
         private void SetDiscount()
         {
-            foreach (var discount in _productsDiscounts)
+            foreach (var discount in _productDiscounts)
             {
-                if (_productsPrices.Any(x => x.ProductCode == discount.ProductCode))
+                if (_productPrices.Any(x => x.ProductCode == discount.ProductCode))
                 {
-                    _productsPrices.First(x => x.ProductCode == discount.ProductCode).Discount = new Discount
+                    _productPrices.First(x => x.ProductCode == discount.ProductCode).Discount = new Discount
                     {
                         ProductCode = discount.ProductCode,
                         WholesaleCount = discount.WholesaleCount,
