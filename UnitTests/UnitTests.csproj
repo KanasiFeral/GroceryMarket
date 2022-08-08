@@ -60,9 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GroceryMarket\GroceryMarket.csproj">
-      <Project>{29fbee5d-676a-406f-b1c6-fb376702ea26}</Project>
-      <Name>GroceryMarket</Name>
+    <ProjectReference Include="..\GroceryMarketAPI\GroceryMarketAPI.csproj">
+      <Project>{3f4f2440-d401-4e21-aa5c-30eaa94f2b45}</Project>
+      <Name>GroceryMarketAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

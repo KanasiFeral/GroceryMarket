@@ -53,13 +53,13 @@
     <None Include="Config\Products.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GroceryMarket\GroceryMarket.csproj">
-      <Project>{29fbee5d-676a-406f-b1c6-fb376702ea26}</Project>
-      <Name>GroceryMarket</Name>
-    </ProjectReference>
+    <Content Include="Config\Products.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\Products.xml" />
+    <ProjectReference Include="..\GroceryMarketAPI\GroceryMarketAPI.csproj">
+      <Project>{3f4f2440-d401-4e21-aa5c-30eaa94f2b45}</Project>
+      <Name>GroceryMarketAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

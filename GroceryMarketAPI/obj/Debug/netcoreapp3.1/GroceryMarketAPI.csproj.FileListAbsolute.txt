@@ -1,0 +1,5 @@
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarketAPI\obj\Debug\netcoreapp3.1\GroceryMarketAPI.csproj.AssemblyReference.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarketAPI\obj\Debug\netcoreapp3.1\GroceryMarketAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarketAPI\obj\Debug\netcoreapp3.1\GroceryMarketAPI.AssemblyInfoInputs.cache
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarketAPI\obj\Debug\netcoreapp3.1\GroceryMarketAPI.AssemblyInfo.cs
+C:\Users\Kanstantsin_Asinousk\Documents\Visual Studio 2022\TestProjects\GroceryMarket\GroceryMarketAPI\obj\Debug\netcoreapp3.1\GroceryMarketAPI.csproj.CoreCompileInputs.cache
