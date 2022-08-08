@@ -28,7 +28,7 @@ namespace GroceryMarketAPI.Classes
                 if (product != null)
                 {
                     // If this product don't have sales for wholesale
-                    if (!product.IsWholesale)
+                    if (product.Discount == null)
                     {
                         total += product.Price;
                     }
@@ -51,7 +51,7 @@ namespace GroceryMarketAPI.Classes
                 if (product != null)
                 {
                     // If this product have sales for wholesale
-                    if (product.IsWholesale)
+                    if (product.Discount != null)
                     {
                         // Getting count of product
                         var countItems = order.Where(x => x.ToString() == product.ProductCode).Count();
@@ -62,17 +62,17 @@ namespace GroceryMarketAPI.Classes
                             continue;
                         }
                         // If we can sell this item as wholesale
-                        if (countItems % product.WholesaleCount == 0)
+                        if (countItems % product.Discount.WholesaleCount == 0)
                         {
-                            total += product.WholesalePrice * (countItems / product.WholesaleCount);
+                            total += product.Discount.WholesalePrice * (countItems / product.Discount.WholesaleCount);
                         }
                         else
                         {
-                            var unevenCount = (int)(countItems / product.WholesaleCount);
+                            var unevenCount = (int)(countItems / product.Discount.WholesaleCount);
 
-                            total += unevenCount * product.WholesalePrice;
+                            total += unevenCount * product.Discount.WholesalePrice;
 
-                            var remainderCount = countItems - (unevenCount * product.WholesaleCount);
+                            var remainderCount = countItems - (unevenCount * product.Discount.WholesaleCount);
 
                             total += remainderCount * product.Price;
                         }

@@ -66,42 +66,42 @@ namespace GroceryMarketTests
         public void WholesaleCountLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithNullData.WholesaleCount), false);
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithNullData.Discount.WholesaleCount), false);
         }
 
         [TestMethod]
         public void WholesaleCountValueError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithIncorrectData.WholesaleCount), false);
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithIncorrectData.Discount.WholesaleCount), false);
         }
 
         [TestMethod]
         public void WholesaleCountValid()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.ProductDto.WholesaleCount), true);
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.DiscountProductA.WholesaleCount), true);
         }
 
         [TestMethod]
         public void WholesalePriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithNullData.WholesalePrice), false);
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithNullData.Discount.WholesalePrice), false);
         }
 
         [TestMethod]
         public void WholesalePriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesalePrice), false);
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithIncorrectData.Discount.WholesalePrice), false);
         }
 
         [TestMethod]
         public void WholesalePriceValid()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.ProductDto.WholesalePrice), true);
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.DiscountProductA.WholesalePrice), true);
         }
     }
 }

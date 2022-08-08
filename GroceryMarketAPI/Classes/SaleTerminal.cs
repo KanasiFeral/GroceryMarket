@@ -9,20 +9,24 @@ namespace GroceryMarketAPI.Classes
     public class SaleTerminal : ISaleTerminal
     {
         private List<Product> _productsPrices;
+        private List<Discount> _productsDiscounts;
         private string _order;
         private readonly Logger _logger;
         private OrderScan _productCodeValidation;
         private readonly ProductPriceCalculator _productPriceCalculation;
         private readonly MapperBase<Product, ProductDto> _productMapper;
+        private readonly MapperBase<Discount, DiscountDto> _discountMapper;
 
         public SaleTerminal()
         {
             _productsPrices = new List<Product>();
+            _productsDiscounts = new List<Discount>();
             _order = "";
             _logger = LogManager.GetCurrentClassLogger();
             _productCodeValidation = new OrderScan();
             _productPriceCalculation = new ProductPriceCalculator();
             _productMapper = new ProductMapper();
+            _discountMapper = new DiscountMapper();
         }
 
         public double CalculateTotal()
@@ -44,7 +48,7 @@ namespace GroceryMarketAPI.Classes
             return true;
         }
 
-        public bool SetPricing(ProductDto product)
+        public bool SetPricing(ProductDto product, DiscountDto? discount)
         {
             if (product == null)
             {
@@ -53,10 +57,18 @@ namespace GroceryMarketAPI.Classes
             }
 
             _productsPrices.Add(_productMapper.Map(product));
+
+            if (discount != null)
+            {
+                _productsDiscounts.Add(_discountMapper.Map(discount));
+            }
+
+            SetDiscount();
+
             return true;
         }
 
-        public bool SetPricing(List<ProductDto> products)
+        public bool SetPricing(List<ProductDto> products, List<DiscountDto>? discounts)
         {
             if (products == null || products.Count() <= 0)
             {
@@ -69,7 +81,33 @@ namespace GroceryMarketAPI.Classes
                 _productsPrices.Add(_productMapper.Map(product));
             }
 
+            if (discounts != null && discounts.Count() > 0)
+            {
+                foreach (var discount in discounts)
+                {
+                    _productsDiscounts.Add(_discountMapper.Map(discount));
+                }               
+            }
+
+            SetDiscount();
+
             return true;
+        }
+
+        private void SetDiscount()
+        {
+            foreach (var discount in _productsDiscounts)
+            {
+                if (_productsPrices.Any(x => x.ProductCode == discount.ProductCode))
+                {
+                    _productsPrices.First(x => x.ProductCode == discount.ProductCode).Discount = new Discount
+                    {
+                        ProductCode = discount.ProductCode,
+                        WholesaleCount = discount.WholesaleCount,
+                        WholesalePrice = discount.WholesalePrice
+                    };
+                }
+            }
         }
     }
 }

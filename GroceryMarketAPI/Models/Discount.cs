@@ -1,8 +1,8 @@
 ﻿namespace GroceryMarketAPI.Models
 {
-    public class Stock
+    public class Discount
     {
-        public Product Product { get; set; }
+        public string ProductCode { get; set; }
         public double WholesalePrice { get; set; }
         public int WholesaleCount { get; set; }
     }

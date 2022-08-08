@@ -10,7 +10,6 @@ namespace GroceryMarketAPI.Mapper
 
         public ProductMapper()
         {
-            // Init validator
             _validator = new ProductValidator();
         }
 
@@ -19,10 +18,7 @@ namespace GroceryMarketAPI.Mapper
             return new Product
             {
                 ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
-                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0,
-                IsWholesale = element.IsWholesale,
-                WholesaleCount = _validator.ValidateWholesaleCount(element.WholesaleCount) ? element.WholesaleCount: 0,
-                WholesalePrice = _validator.ValidateWholesalePrice(element.WholesalePrice) ? element.WholesalePrice : 0.0
+                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0
             };
         }
 
@@ -31,10 +27,7 @@ namespace GroceryMarketAPI.Mapper
             return new ProductDto
             {
                 ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
-                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0,
-                IsWholesale = element.IsWholesale,
-                WholesaleCount = _validator.ValidateWholesaleCount(element.WholesaleCount) ? element.WholesaleCount : 0,
-                WholesalePrice = _validator.ValidateWholesalePrice(element.WholesalePrice) ? element.WholesalePrice : 0.0
+                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0
             };
         }
     }
