@@ -18,9 +18,9 @@ namespace GroceryMarketAPI.Classes
         // Logger for save info when something do wrong
         private readonly Logger _logger;
         // ProductCode validation
-        private ProductCodeValidation _productCodeValidation;
+        private ProductCodeScan _productCodeValidation;
         // Calculation total price
-        private ProductPriceCalculation _productPriceCalculation;
+        private ProductPriceCalculator _productPriceCalculation;
         // Mapper to convert DTO model to internal model
         private readonly MapperBase<Product, ProductDto> _productMapper;
 
@@ -33,9 +33,9 @@ namespace GroceryMarketAPI.Classes
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
             // Init ProductCodeValidation
-            _productCodeValidation = new ProductCodeValidation();
+            _productCodeValidation = new ProductCodeScan();
             // Init ProductCalculation
-            _productPriceCalculation = new ProductPriceCalculation();
+            _productPriceCalculation = new ProductPriceCalculator();
             // Init mapper
             _productMapper = new ProductMapper();
 

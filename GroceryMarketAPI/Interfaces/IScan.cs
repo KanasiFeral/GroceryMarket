@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GroceryMarketAPI.Models;
+﻿using GroceryMarketAPI.Models;
 
 namespace GroceryMarketAPI.Interfaces
 {

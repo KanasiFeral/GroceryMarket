@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GroceryMarketAPI.Interfaces;
+﻿using GroceryMarketAPI.Interfaces;
 using GroceryMarketAPI.Models;
 using NLog;
 
 namespace GroceryMarketAPI.Classes
 {
-    public class ProductPriceCalculation : ICalculation
+    public class ProductPriceCalculator : ICalculator
     {
         // Logger for save info when something do wrong
         private readonly Logger _logger;
 
-        public ProductPriceCalculation()
+        public ProductPriceCalculator()
         {
             // Init log
             _logger = LogManager.GetCurrentClassLogger();

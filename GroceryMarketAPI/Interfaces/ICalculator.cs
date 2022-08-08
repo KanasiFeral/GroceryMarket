@@ -2,7 +2,7 @@
 
 namespace GroceryMarketAPI.Interfaces
 {
-    public interface ICalculation
+    public interface ICalculator
     {
         double CalculationWithWholesale(List<Product> productsPrices, string order);
         double CalculationWithoutWholesale(List<Product> productsPrices, string order);

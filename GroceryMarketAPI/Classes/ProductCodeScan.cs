@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GroceryMarketAPI.Interfaces;
+﻿using GroceryMarketAPI.Interfaces;
 using GroceryMarketAPI.Models;
 using NLog;
 
 namespace GroceryMarketAPI.Classes
 {
-    public class ProductCodeValidation : IScan
+    public class ProductCodeScan : IScan
     {
         // Logger for save info when something do wrong
         private readonly Logger _logger;
 
-        public ProductCodeValidation()
+        public ProductCodeScan()
         {
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
