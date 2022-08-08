@@ -4,7 +4,7 @@ using NLog;
 
 namespace GroceryMarketAPI.Classes
 {
-    public class OrderScan : IScan
+    public class OrderScan : IOrderScan
     {
         // Logger for save info when something do wrong
         private readonly Logger _logger;

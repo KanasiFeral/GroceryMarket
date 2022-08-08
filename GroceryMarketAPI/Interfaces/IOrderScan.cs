@@ -2,7 +2,7 @@
 
 namespace GroceryMarketAPI.Interfaces
 {
-    public interface IScan
+    public interface IOrderScan
     {
         string Scan(List<Product> productsPrices, string order);
     }
