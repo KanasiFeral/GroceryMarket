@@ -15,21 +15,9 @@ namespace GroceryMarketAPI.Classes
             _logger = LogManager.GetCurrentClassLogger();
         }
 
-        public double CalculationWithoutWholesale(List<Product> productsPrices, string order)
+        private double CalculationWithoutWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
-
-            if (string.IsNullOrEmpty(order))
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
-                return total;
-            }
-
-            if (productsPrices == null || productsPrices.Count() == 0)
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
-                return total;
-            }
 
             // Calculate data without wholesale
             foreach (var productCode in order)
@@ -50,21 +38,9 @@ namespace GroceryMarketAPI.Classes
             return total;
         }
 
-        public double CalculationWithWholesale(List<Product> productsPrices, string order)
+        private double CalculationWithWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
-
-            if (string.IsNullOrEmpty(order))
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
-                return total;
-            }
-
-            if (productsPrices == null || productsPrices.Count() == 0)
-            {
-                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
-                return total;
-            }
 
             // Final calculating with data with wholesale
             foreach (var productCode in order.Distinct())
@@ -110,6 +86,18 @@ namespace GroceryMarketAPI.Classes
         public double TotalCalculation(List<Product> productsPrices, string order)
         {
             var total = 0.0;
+
+            if (string.IsNullOrEmpty(order))
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.PRODUCT_CODE_VALUE_ERROR_MESSAGE);
+                return total;
+            }
+
+            if (productsPrices == null || productsPrices.Count() == 0)
+            {
+                _logger.Error(new ArgumentNullException(), ErrorCodes.CONFIGURATION_DATA_ARE_EMPTY_ERROR_MESSAGE);
+                return total;
+            }
 
             // Calculating products without wholesale
             total += CalculationWithoutWholesale(productsPrices, order);

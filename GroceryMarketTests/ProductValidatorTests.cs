@@ -1,4 +1,5 @@
 ﻿using GroceryMarketAPI.Classes;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace GroceryMarketTests
 {
@@ -13,75 +14,94 @@ namespace GroceryMarketTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "ProductCode cannot be empty")]
-        public void IsProductCodeEmptyError()
+        public void ProductCodeEmptyError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode);
+            Assert.AreEqual(validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "ProductCode cannot be more than 50 symbols")]
-        public void IsProductCodeLengthError()
+        public void ProductCodeLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithIncorrectData.ProductCode);
+            Assert.AreEqual(validator.ValidateProductCode(_initDataRepository.IncorrectProductWithIncorrectData.ProductCode), false);
+        }       
+
+        [TestMethod]
+        public void ProductCodeLatinLettersError()
+        {
+            ProductValidator validator = new ProductValidator();
+            Assert.AreEqual(validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "ProductCode must using only latin letters")]
-        public void IsProductCodeLatinLettersError()
+        public void ProductCodeValid()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidateProductCode(_initDataRepository.IncorrectProductWithNullData.ProductCode);
+            Assert.AreEqual(validator.ValidateProductCode(_initDataRepository.ProductDto.ProductCode), true);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "Price cannot be less 0")]
-        public void IsPriceLengthError()
+        public void PriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.Price);
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.Price), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "Price cannot be more than 1m")]
-        public void IsPriceValueError()
+        public void PriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.Price);
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.Price), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "Wholesale count cannot be less 0")]
+        public void PriceValueValid()
+        {
+            ProductValidator validator = new ProductValidator();
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.ProductDto.Price), true);
+        }
+
+        [TestMethod]
         public void WholesaleCountLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.WholesaleCount);
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithNullData.WholesaleCount), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "Wholesale count cannot be more than 1m")]
         public void WholesaleCountValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesaleCount);
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.IncorrectProductWithIncorrectData.WholesaleCount), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "WholesalePrice cannot be less 0")]
+        public void WholesaleCountValid()
+        {
+            ProductValidator validator = new ProductValidator();
+            Assert.AreEqual(validator.ValidateWholesaleCount(_initDataRepository.ProductDto.WholesaleCount), true);
+        }
+
+        [TestMethod]
         public void WholesalePriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.WholesalePrice);
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithNullData.WholesalePrice), false);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "WholesalePrice cannot be more than 1m")]
         public void WholesalePriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesalePrice);
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.IncorrectProductWithIncorrectData.WholesalePrice), false);
+        }
+
+        [TestMethod]
+        public void WholesalePriceValid()
+        {
+            ProductValidator validator = new ProductValidator();
+            Assert.AreEqual(validator.ValidateWholesalePrice(_initDataRepository.ProductDto.WholesalePrice), true);
         }
     }
 }

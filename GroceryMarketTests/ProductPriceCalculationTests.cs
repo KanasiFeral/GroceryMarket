@@ -14,52 +14,6 @@ namespace GroceryMarketTests
         }
 
         [TestMethod]
-        public void CalculationWithoutWholesaleNotZero()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreNotEqual(priceCalculation.CalculationWithoutWholesale(_initDataRepository.Products, "BB"), 
-                _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
-        public void CalculationWithoutWholesaleWithNullOrder()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(_initDataRepository.Products, string.Empty),
-                _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
-        public void CalculationWithoutWholesaleNullPrices()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreEqual(priceCalculation.CalculationWithoutWholesale(null, "AA"), _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
-        public void CalculationWithWholesaleNotZero()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreNotEqual(priceCalculation.CalculationWithWholesale(_initDataRepository.Products, "AA"),
-                _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
-        public void CalculationWithWholesaleWithNullOrder()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreEqual(priceCalculation.CalculationWithWholesale(_initDataRepository.Products, string.Empty),
-                _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
-        public void CalculationWithWholesaleWithNullPrices()
-        {
-            ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
-            Assert.AreEqual(priceCalculation.CalculationWithWholesale(null, "AA"), _initDataRepository.ResultZero);
-        }
-
-        [TestMethod]
         public void TotalCalculationNotZero()
         {
             ProductPriceCalculator priceCalculation = new ProductPriceCalculator();
