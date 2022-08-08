@@ -9,22 +9,23 @@ namespace GroceryMarketTests
     public class SaleTerminalTests
     {
         private readonly InitDataRepository _initDataRepository;
+        private readonly SaleTerminal _saleTerminal;
 
         public SaleTerminalTests()
         {
             _initDataRepository = new InitDataRepository();
+            _saleTerminal = new SaleTerminal(new OrderScan(),
+                new PriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper(),
+                new ProductPriceMapper()
+            );
         }
 
         [TestMethod]
         public void SetPricingReturnTrueWithProductsList()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),    
-                new PriceCalculator(),    
-                new ProductMapper(),    
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDtos, 
+            Assert.AreEqual(_saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos, 
                 _initDataRepository.DiscountsDtos), true);
         }
@@ -32,13 +33,7 @@ namespace GroceryMarketTests
         [TestMethod]
         public void SetPricingReturnTrueWithSingleProduct()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDto, 
+            Assert.AreEqual(_saleTerminal.SetPrice(_initDataRepository.ProductDto, 
                 _initDataRepository.ProductPriceDto, 
                 _initDataRepository.DiscountDto), true);
         }
@@ -46,90 +41,54 @@ namespace GroceryMarketTests
         [TestMethod]
         public void SetPricingReturnFalseWithNullValue()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            Assert.AreEqual(terminal.SetPrice(new List<ProductDto>(), new List<ProductPriceDto>(), null), false);
+            Assert.AreEqual(_saleTerminal.SetPrice(new List<ProductDto>(), new List<ProductPriceDto>(), null), false);
         }
 
         [TestMethod]
         public void ScanWorkingFine()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            terminal.SetPrice(_initDataRepository.ProductDtos, 
+            _saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos, 
                 _initDataRepository.DiscountsDtos);
-            Assert.AreEqual(terminal.Scan(_initDataRepository.OrderABCDABA), true);
+            Assert.AreEqual(_saleTerminal.Scan(_initDataRepository.OrderABCDABA), true);
         }
 
         [TestMethod]
         public void ScanReturnNullScanValue()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            terminal.SetPrice(_initDataRepository.ProductDtos, 
+            _saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos,
                 _initDataRepository.DiscountsDtos);
-            Assert.AreEqual(terminal.Scan(string.Empty), false);
+            Assert.AreEqual(_saleTerminal.Scan(string.Empty), false);
         }
 
         [TestMethod]
         public void ScanReturnNullWithIncorrectOrder()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            terminal.SetPrice(_initDataRepository.ProductDtos, 
+            _saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos, 
                 _initDataRepository.DiscountsDtos);
-            Assert.AreEqual(terminal.Scan(_initDataRepository.OrderHHH), false);
+            Assert.AreEqual(_saleTerminal.Scan(_initDataRepository.OrderHHH), false);
         }
 
         [TestMethod]
         public void CalculateTotalWorkingFine()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            terminal.SetPrice(_initDataRepository.ProductDtos, 
+            _saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos,
                 _initDataRepository.DiscountsDtos);
-            terminal.Scan(_initDataRepository.OrderCCCCCCC);
-            Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
+            _saleTerminal.Scan(_initDataRepository.OrderCCCCCCC);
+            Assert.AreEqual(_saleTerminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
         }
 
         [TestMethod]
         public void CalculateTotalReturnZero()
         {
-            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
-                new PriceCalculator(),
-                new ProductMapper(),
-                new DiscountMapper(),
-                new ProductPriceMapper()
-            );
-            terminal.SetPrice(_initDataRepository.ProductDtos, 
+            _saleTerminal.SetPrice(_initDataRepository.ProductDtos, 
                 _initDataRepository.ProductPriceDtos, 
                 _initDataRepository.DiscountsDtos);
-            terminal.Scan(_initDataRepository.OrderHHH);
-            Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultZero);
+            _saleTerminal.Scan(_initDataRepository.OrderHHH);
+            Assert.AreEqual(_saleTerminal.CalculateTotal(), _initDataRepository.ResultZero);
         }
     }
 }
