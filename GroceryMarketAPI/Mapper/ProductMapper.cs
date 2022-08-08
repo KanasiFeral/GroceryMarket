@@ -1,5 +1,4 @@
-﻿using System;
-using GroceryMarketAPI.Classes;
+﻿using GroceryMarketAPI.Classes;
 using GroceryMarketAPI.Models;
 using GroceryMarketAPI.ModelsDTO;
 
@@ -7,8 +6,7 @@ namespace GroceryMarketAPI.Mapper
 {
     public sealed class ProductMapper : MapperBase<Product, ProductDto>
     {
-        // Validator for data
-        private readonly ProductValidator _validator;
+        private readonly ProductValidator _validator;        
 
         public ProductMapper()
         {

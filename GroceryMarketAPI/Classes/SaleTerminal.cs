@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GroceryMarketAPI.Interfaces;
+﻿using GroceryMarketAPI.Interfaces;
 using GroceryMarketAPI.Mapper;
 using GroceryMarketAPI.Models;
 using GroceryMarketAPI.ModelsDTO;
@@ -11,42 +8,27 @@ namespace GroceryMarketAPI.Classes
 {
     public class SaleTerminal : ISaleTerminal
     {
-        // Configuration data
         private List<Product> _productsPrices;
-        // Products codes
         private string _order;
-        // Logger for save info when something do wrong
         private readonly Logger _logger;
-        // ProductCode validation
         private ProductCodeScan _productCodeValidation;
-        // Calculation total price
-        private ProductPriceCalculator _productPriceCalculation;
-        // Mapper to convert DTO model to internal model
+        private readonly ProductPriceCalculator _productPriceCalculation;
         private readonly MapperBase<Product, ProductDto> _productMapper;
 
         public SaleTerminal()
         {
-            // Init product prices list
             _productsPrices = new List<Product>();
-            // Init order
             _order = "";
-            // Init log
             _logger = LogManager.GetCurrentClassLogger();
-            // Init ProductCodeValidation
             _productCodeValidation = new ProductCodeScan();
-            // Init ProductCalculation
             _productPriceCalculation = new ProductPriceCalculator();
-            // Init mapper
             _productMapper = new ProductMapper();
-
         }
 
         public double CalculateTotal()
         {
             var total = _productPriceCalculation.TotalCalculation(_productsPrices, _order);
-
             _order = string.Empty;
-
             return total;
         }
 
@@ -71,7 +53,6 @@ namespace GroceryMarketAPI.Classes
             }
 
             _productsPrices.Add(_productMapper.Map(product));
-
             return true;
         }
 
