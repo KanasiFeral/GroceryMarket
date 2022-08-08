@@ -16,50 +16,26 @@ namespace GroceryMarketAPI.Mapper
 
         public override Product Map(ProductDto element)
         {
-            // Validate data
-            ValidateData(element);
-
             return new Product
             {
-                ProductCode = element.ProductCode,
-                Price = element.Price,
+                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
+                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0,
                 IsWholesale = element.IsWholesale,
-                WholesaleCount = element.WholesaleCount,
-                WholesalePrice = element.WholesalePrice
+                WholesaleCount = _validator.ValidateWholesaleCount(element.WholesaleCount) ? element.WholesaleCount: 0,
+                WholesalePrice = _validator.ValidateWholesalePrice(element.WholesalePrice) ? element.WholesalePrice : 0.0
             };
         }
 
         public override ProductDto Map(Product element)
         {
-            // Validate data
-            ValidateData(element);
-
             return new ProductDto
             {
-                ProductCode = element.ProductCode,
-                Price = element.Price,
+                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
+                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0,
                 IsWholesale = element.IsWholesale,
-                WholesaleCount = element.WholesaleCount,
-                WholesalePrice = element.WholesalePrice
+                WholesaleCount = _validator.ValidateWholesaleCount(element.WholesaleCount) ? element.WholesaleCount : 0,
+                WholesalePrice = _validator.ValidateWholesalePrice(element.WholesalePrice) ? element.WholesalePrice : 0.0
             };
-        }
-
-        // Validate model dto
-        private void ValidateData(ProductDto element)
-        {
-            _validator.ValidateProductCode(element.ProductCode);
-            _validator.ValidatePrice(element.Price);
-            _validator.ValidateWholesaleCount(element.WholesaleCount);
-            _validator.ValidateWholesalePrice(element.WholesalePrice);
-        }
-
-        // Validate model
-        private void ValidateData(Product element)
-        {
-            _validator.ValidateProductCode(element.ProductCode);
-            _validator.ValidatePrice(element.Price);
-            _validator.ValidateWholesaleCount(element.WholesaleCount);
-            _validator.ValidateWholesalePrice(element.WholesalePrice);
         }
     }
 }
