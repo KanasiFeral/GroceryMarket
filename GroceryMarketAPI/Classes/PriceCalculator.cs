@@ -15,7 +15,7 @@ namespace GroceryMarketAPI.Classes
             _logger = LogManager.GetCurrentClassLogger();
         }
 
-        private double CalculationWithoutWholesale(List<Product> productsPrices, string order)
+        private static double CalculateWithoutWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
 
@@ -38,7 +38,7 @@ namespace GroceryMarketAPI.Classes
             return total;
         }
 
-        private double CalculationWithWholesale(List<Product> productsPrices, string order)
+        private static double CalculateWithWholesale(List<Product> productsPrices, string order)
         {
             var total = 0.0;
 
@@ -100,10 +100,10 @@ namespace GroceryMarketAPI.Classes
             }
 
             // Calculating products without wholesale
-            total += CalculationWithoutWholesale(productsPrices, order);
+            total += CalculateWithoutWholesale(productsPrices, order);
 
             // Calculating products with wholesale
-            total += CalculationWithWholesale(productsPrices, order);
+            total += CalculateWithWholesale(productsPrices, order);
 
             return total;
         }
