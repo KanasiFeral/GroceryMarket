@@ -21,9 +21,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),    
                 new PriceCalculator(),    
                 new ProductMapper(),    
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos), true);
+            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos, 
+                _initDataRepository.DiscountsDtos), true);
         }
 
         [TestMethod]
@@ -32,9 +35,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDto, _initDataRepository.DiscountDto), true);
+            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDto, 
+                _initDataRepository.ProductPriceDto, 
+                _initDataRepository.DiscountDto), true);
         }
 
         [TestMethod]
@@ -43,9 +49,10 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            Assert.AreEqual(terminal.SetPrice(new List<ProductDto>(), null), false);
+            Assert.AreEqual(terminal.SetPrice(new List<ProductDto>(), new List<ProductPriceDto>(), null), false);
         }
 
         [TestMethod]
@@ -54,9 +61,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos, 
+                _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderABCDABA), true);
         }
 
@@ -66,9 +76,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos,
+                _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(string.Empty), false);
         }
 
@@ -78,9 +91,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos, 
+                _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderHHH), false);
         }
 
@@ -90,9 +106,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos,
+                _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderCCCCCCC);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
         }
@@ -103,9 +122,12 @@ namespace GroceryMarketTests
             SaleTerminal terminal = new SaleTerminal(new OrderScan(),
                 new PriceCalculator(),
                 new ProductMapper(),
-                new DiscountMapper()
+                new DiscountMapper(),
+                new ProductPriceMapper()
             );
-            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, 
+                _initDataRepository.ProductPriceDtos, 
+                _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderHHH);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultZero);
         }

@@ -6,20 +6,36 @@ List<ProductDto> products = new()
 {
     new ProductDto()
     {
-        ProductCode = "A",
-        Price = 1.25
-        
+        ProductCode = "A"        
     },
     new ProductDto()
     {                    
-        ProductCode = "B",                    
-        Price = 4.25
+        ProductCode = "B"
     },                
     new ProductDto()                
     {                    
-        ProductCode = "C",                    
-        Price = 1.00 
+        ProductCode = "C"
     }            
+};
+
+List<ProductPriceDto> productPrices = new()
+{
+     new ProductPriceDto()
+    {
+        ProductCode = "A",
+        Price = 1.25
+
+    },
+    new ProductPriceDto()
+    {
+        ProductCode = "B",
+        Price = 4.25
+    },
+    new ProductPriceDto()
+    {
+        ProductCode = "C",
+        Price = 1.00
+    }
 };
 
 List<DiscountDto> discounts = new()
@@ -40,6 +56,11 @@ List<DiscountDto> discounts = new()
 
 ProductDto product = new()
 {
+    ProductCode = "D"
+};
+
+ProductPriceDto productPrice = new()
+{
     ProductCode = "D",
     Price = 0.75
 };
@@ -48,11 +69,12 @@ SaleTerminal terminal = new(
     new OrderScan(), 
     new PriceCalculator(), 
     new ProductMapper(), 
-    new DiscountMapper()
+    new DiscountMapper(),
+    new ProductPriceMapper()
 );
 
-terminal.SetPrice(product, null);
-terminal.SetPrice(products, discounts);
+terminal.SetPrice(product, productPrice, null);
+terminal.SetPrice(products, productPrices, discounts);
 
 terminal.Scan("ABCEDABA");
 Console.WriteLine($"Total price: {terminal.CalculateTotal()}");

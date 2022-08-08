@@ -45,21 +45,21 @@ namespace GroceryMarketTests
         public void PriceLengthError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.Price), false);
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithNullData.ProductPrice.Price), false);
         }
 
         [TestMethod]
         public void PriceValueError()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.Price), false);
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.IncorrectProductWithIncorrectData.ProductPrice.Price), false);
         }
 
         [TestMethod]
         public void PriceValueValid()
         {
             ProductValidator validator = new ProductValidator();
-            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.ProductDto.Price), true);
+            Assert.AreEqual(validator.ValidatePrice(_initDataRepository.ProductPriceDto.Price), true);
         }
 
         [TestMethod]

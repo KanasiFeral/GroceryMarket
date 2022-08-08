@@ -17,8 +17,7 @@ namespace GroceryMarketAPI.Mapper
         {
             return new Product
             {
-                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
-                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0
+                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty
             };
         }
 
@@ -26,8 +25,7 @@ namespace GroceryMarketAPI.Mapper
         {
             return new ProductDto
             {
-                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty,
-                Price = _validator.ValidatePrice(element.Price) ? element.Price : 0.0
+                ProductCode = _validator.ValidateProductCode(element.ProductCode) ? element.ProductCode : string.Empty
             };
         }
     }

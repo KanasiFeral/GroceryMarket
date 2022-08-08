@@ -18,15 +18,31 @@ namespace GroceryMarketTests
         {
             new ProductDto()
             {
+                ProductCode = "A"
+            },
+            new ProductDto()
+            {
+                ProductCode = "B"
+            },
+            new ProductDto()
+            {
+                ProductCode = "C"
+            }
+        };
+
+        private readonly List<ProductPriceDto> _productPriceDtos = new List<ProductPriceDto>()
+        {
+            new ProductPriceDto()
+            {
                 ProductCode = "A",
                 Price = 1.25
             },
-            new ProductDto()
+            new ProductPriceDto()
             {
                 ProductCode = "B",
                 Price = 4.25
             },
-            new ProductDto()
+            new ProductPriceDto()
             {
                 ProductCode = "C",
                 Price = 1.00
@@ -34,6 +50,11 @@ namespace GroceryMarketTests
         };
 
         private readonly ProductDto _productDto = new ProductDto()
+        {
+            ProductCode = "A"
+        };
+
+        private readonly ProductPriceDto _productPriceDto = new ProductPriceDto()
         {
             ProductCode = "A",
             Price = 1.25
@@ -67,7 +88,11 @@ namespace GroceryMarketTests
             new Product()
             {
                 ProductCode = "A",
-                Price = 1.25,
+                ProductPrice = new ProductPrice()
+                {
+                    ProductCode = "A",
+                    Price = 1.25
+                },
                 Discount = new Discount()
                 {
                     ProductCode = "A",
@@ -78,12 +103,20 @@ namespace GroceryMarketTests
             new Product()
             {
                 ProductCode = "B",
-                Price = 4.25
+                ProductPrice = new ProductPrice()
+                {
+                    ProductCode= "B",                       
+                    Price =  4.25
+                }
             },
             new Product()
             {
                 ProductCode = "C",
-                Price = 1.00,
+                ProductPrice = new ProductPrice()
+                {
+                    ProductCode = "C",
+                    Price = 1.00
+                },
                 Discount = new Discount()
                 {
                     ProductCode = "C",
@@ -94,7 +127,11 @@ namespace GroceryMarketTests
             new Product()
             {
                 ProductCode = "D",
-                Price = 0.75
+                ProductPrice = new ProductPrice()
+                {
+                    ProductCode = "D",
+                    Price = 0.75
+                }
             }
         };
 
@@ -108,7 +145,11 @@ namespace GroceryMarketTests
         private readonly Product _incorrectProductWithNullData = new Product()
         {
             ProductCode = string.Empty,
-            Price = -1,
+            ProductPrice = new ProductPrice()
+            {
+                ProductCode = string.Empty,
+                Price = -1
+            },
             Discount = new Discount()
             {
                 ProductCode = string.Empty,
@@ -120,7 +161,11 @@ namespace GroceryMarketTests
         private readonly Product _incorrectProductWithIncorrectData = new Product()
         {
             ProductCode = "ЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ",
-            Price = 1000000000,
+            ProductPrice = new ProductPrice()
+            {
+                ProductCode = "ЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ",
+                Price = 1000000000
+            },
             Discount = new Discount()
             {
                 ProductCode = "ЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ",
@@ -131,14 +176,16 @@ namespace GroceryMarketTests
 
         public string OrderABCDABA => _orderABCDABA;
         public string OrderABCDAEBA => _orderABCDAEBA;
-        public string OrderCCCCCCC => _orderCCCCCCC;        
+        public string OrderCCCCCCC => _orderCCCCCCC;
         public string OrderHHH => _orderHHH;
         public double ResultABCDABA => _resultABCDABA;
         public double ResultCCCCCCC => _resultCCCCCCC;
         public double ResultABCD => _resultABCD;
         public double ResultZero => _resultZero;
         public List<ProductDto> ProductDtos => _productDtos;
+        public List<ProductPriceDto> ProductPriceDtos => _productPriceDtos;
         public ProductDto ProductDto => _productDto;
+        public ProductPriceDto ProductPriceDto => _productPriceDto;
         public DiscountDto DiscountDto => _discountDto;
         public List<DiscountDto> DiscountsDtos => _discountDtos;
         public List<Product> Products => _products;

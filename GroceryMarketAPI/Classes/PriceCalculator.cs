@@ -30,7 +30,7 @@ namespace GroceryMarketAPI.Classes
                     // If this product don't have sales for wholesale
                     if (product.Discount == null)
                     {
-                        total += product.Price;
+                        total += product.ProductPrice.Price;
                     }
                 }
             }
@@ -58,7 +58,7 @@ namespace GroceryMarketAPI.Classes
                         // If item is wholesale, but only one
                         if (countItems == 1)
                         {
-                            total += product.Price;
+                            total += product.ProductPrice.Price;
                             continue;
                         }
                         // If we can sell this item as wholesale
@@ -74,7 +74,7 @@ namespace GroceryMarketAPI.Classes
 
                             var remainderCount = countItems - (unevenCount * product.Discount.WholesaleCount);
 
-                            total += remainderCount * product.Price;
+                            total += remainderCount * product.ProductPrice.Price;
                         }
                     }
                 }
