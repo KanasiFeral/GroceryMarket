@@ -35,7 +35,7 @@ namespace GroceryMarketAPI.Classes
 
         public double CalculateTotal()
         {
-            var total = _productPriceCalculation.TotalCalculation(_productPrices, _order);
+            var total = _productPriceCalculation.CalculateTotal(_productPrices, _order);
             _order = string.Empty;
             return total;
         }
@@ -52,7 +52,7 @@ namespace GroceryMarketAPI.Classes
             return true;
         }
 
-        public bool SetPricing(ProductDto product, DiscountDto? discount)
+        public bool SetPrice(ProductDto product, DiscountDto? discount)
         {
             if (product == null)
             {
@@ -72,7 +72,7 @@ namespace GroceryMarketAPI.Classes
             return true;
         }
 
-        public bool SetPricing(List<ProductDto> products, List<DiscountDto>? discounts)
+        public bool SetPrice(List<ProductDto> products, List<DiscountDto>? discounts)
         {
             if (products == null || products.Count() <= 0)
             {

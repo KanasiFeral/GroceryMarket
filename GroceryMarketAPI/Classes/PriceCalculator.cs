@@ -83,7 +83,7 @@ namespace GroceryMarketAPI.Classes
             return total;
         }
 
-        public double TotalCalculation(List<Product> productsPrices, string order)
+        public double CalculateTotal(List<Product> productsPrices, string order)
         {
             var total = 0.0;
 

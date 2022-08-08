@@ -51,8 +51,8 @@ SaleTerminal terminal = new(
     new DiscountMapper()
 );
 
-terminal.SetPricing(product, null);
-terminal.SetPricing(products, discounts);
+terminal.SetPrice(product, null);
+terminal.SetPrice(products, discounts);
 
 terminal.Scan("ABCEDABA");
 Console.WriteLine($"Total price: {terminal.CalculateTotal()}");

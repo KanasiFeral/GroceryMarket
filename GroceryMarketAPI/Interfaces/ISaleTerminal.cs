@@ -4,8 +4,8 @@ namespace GroceryMarketAPI.Interfaces
 {
     public interface ISaleTerminal
     {
-        bool SetPricing(ProductDto product, DiscountDto? discount);
-        bool SetPricing(List<ProductDto> products, List<DiscountDto>? discounts);
+        bool SetPrice(ProductDto product, DiscountDto? discount);
+        bool SetPrice(List<ProductDto> products, List<DiscountDto>? discounts);
         bool Scan(string productCode);
         double CalculateTotal();
     }

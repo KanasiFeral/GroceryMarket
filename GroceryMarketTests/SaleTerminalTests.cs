@@ -23,7 +23,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),    
                 new DiscountMapper()
             );
-            Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos), true);
+            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos), true);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDto, _initDataRepository.DiscountDto), true);
+            Assert.AreEqual(terminal.SetPrice(_initDataRepository.ProductDto, _initDataRepository.DiscountDto), true);
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            Assert.AreEqual(terminal.SetPricing(new List<ProductDto>(), null), false);
+            Assert.AreEqual(terminal.SetPrice(new List<ProductDto>(), null), false);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderABCDABA), true);
         }
 
@@ -68,7 +68,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(string.Empty), false);
         }
 
@@ -80,7 +80,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderHHH), false);
         }
 
@@ -92,7 +92,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderCCCCCCC);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
         }
@@ -105,7 +105,7 @@ namespace GroceryMarketTests
                 new ProductMapper(),
                 new DiscountMapper()
             );
-            terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
+            terminal.SetPrice(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderHHH);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultZero);
         }
