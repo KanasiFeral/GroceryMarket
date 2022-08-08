@@ -11,7 +11,7 @@ namespace GroceryMarketAPI.Classes
         private List<Product> _productsPrices;
         private string _order;
         private readonly Logger _logger;
-        private ProductCodeScan _productCodeValidation;
+        private OrderScan _productCodeValidation;
         private readonly ProductPriceCalculator _productPriceCalculation;
         private readonly MapperBase<Product, ProductDto> _productMapper;
 
@@ -20,7 +20,7 @@ namespace GroceryMarketAPI.Classes
             _productsPrices = new List<Product>();
             _order = "";
             _logger = LogManager.GetCurrentClassLogger();
-            _productCodeValidation = new ProductCodeScan();
+            _productCodeValidation = new OrderScan();
             _productPriceCalculation = new ProductPriceCalculator();
             _productMapper = new ProductMapper();
         }

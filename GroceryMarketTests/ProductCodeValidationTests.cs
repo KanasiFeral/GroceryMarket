@@ -16,7 +16,7 @@ namespace GroceryMarketTests
         [TestMethod]
         public void ScanWithCorrectOrder()
         {
-            ProductCodeScan validation = new ProductCodeScan();
+            OrderScan validation = new OrderScan();
             Assert.AreEqual(validation.Scan(_initDataRepository.Products, 
                 _initDataRepository.OrderABCDABA), _initDataRepository.OrderABCDABA);
         }
@@ -24,7 +24,7 @@ namespace GroceryMarketTests
         [TestMethod]
         public void ScanWithIncorrectOrder()
         {
-            ProductCodeScan validation = new ProductCodeScan();
+            OrderScan validation = new OrderScan();
             Assert.AreEqual(validation.Scan(_initDataRepository.Products,
                 _initDataRepository.OrderABCDAEBA), _initDataRepository.OrderABCDABA);
         }
@@ -32,14 +32,14 @@ namespace GroceryMarketTests
         [TestMethod]
         public void ScanNullOrder()
         {
-            ProductCodeScan validation = new ProductCodeScan();
+            OrderScan validation = new OrderScan();
             Assert.AreEqual(validation.Scan(_initDataRepository.Products, string.Empty), "");
         }
 
         [TestMethod]
         public void ScanNullPrices()
         {
-            ProductCodeScan validation = new ProductCodeScan();
+            OrderScan validation = new OrderScan();
             Assert.AreEqual(validation.Scan(null, _initDataRepository.OrderABCDABA), "");
         }
     }

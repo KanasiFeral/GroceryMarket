@@ -4,12 +4,12 @@ using NLog;
 
 namespace GroceryMarketAPI.Classes
 {
-    public class ProductCodeScan : IScan
+    public class OrderScan : IScan
     {
         // Logger for save info when something do wrong
         private readonly Logger _logger;
 
-        public ProductCodeScan()
+        public OrderScan()
         {
             // Init log
             _logger = LogManager.GetCurrentClassLogger();
