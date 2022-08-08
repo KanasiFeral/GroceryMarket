@@ -6,12 +6,10 @@ namespace GroceryMarketAPI.Classes
 {
     public class OrderScan : IOrderScan
     {
-        // Logger for save info when something do wrong
         private readonly Logger _logger;
 
         public OrderScan()
         {
-            // Init log
             _logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -33,10 +31,8 @@ namespace GroceryMarketAPI.Classes
 
             foreach (var productCode in order)
             {
-                // Find product code in price list
                 if (productsPrices.Any(x => x.ProductCode == productCode.ToString()))
                 {
-                    // Adding product code to result value
                     result += productCode.ToString();
                 }
             }

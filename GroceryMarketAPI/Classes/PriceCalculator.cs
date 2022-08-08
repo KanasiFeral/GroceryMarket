@@ -6,12 +6,10 @@ namespace GroceryMarketAPI.Classes
 {
     public class PriceCalculator : IPriceCalculator
     {
-        // Logger for save info when something do wrong
         private readonly Logger _logger;
 
         public PriceCalculator()
         {
-            // Init log
             _logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -19,15 +17,12 @@ namespace GroceryMarketAPI.Classes
         {
             var total = 0.0;
 
-            // Calculate data without wholesale
             foreach (var productCode in order)
             {
-                // Get full info about this current product
                 var product = productsPrices.Where(x => x.ProductCode == productCode.ToString()).FirstOrDefault();
-                // If product code in the price list
+
                 if (product != null)
                 {
-                    // If this product don't have sales for wholesale
                     if (product.Discount == null)
                     {
                         total += product.ProductPrice.Price;
@@ -42,26 +37,22 @@ namespace GroceryMarketAPI.Classes
         {
             var total = 0.0;
 
-            // Final calculating with data with wholesale
             foreach (var productCode in order.Distinct())
             {
-                // Get full info about this current product
                 var product = productsPrices.Where(x => x.ProductCode == productCode.ToString()).FirstOrDefault();
-                // If product code in the price list
+
                 if (product != null)
                 {
-                    // If this product have sales for wholesale
                     if (product.Discount != null)
                     {
-                        // Getting count of product
                         var countItems = order.Where(x => x.ToString() == product.ProductCode).Count();
-                        // If item is wholesale, but only one
+
                         if (countItems == 1)
                         {
                             total += product.ProductPrice.Price;
                             continue;
                         }
-                        // If we can sell this item as wholesale
+
                         if (countItems % product.Discount.WholesaleCount == 0)
                         {
                             total += product.Discount.WholesalePrice * (countItems / product.Discount.WholesaleCount);
@@ -99,10 +90,8 @@ namespace GroceryMarketAPI.Classes
                 return total;
             }
 
-            // Calculating products without wholesale
             total += CalculateWithoutWholesale(productsPrices, order);
 
-            // Calculating products with wholesale
             total += CalculateWithWholesale(productsPrices, order);
 
             return total;
