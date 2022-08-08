@@ -1,4 +1,5 @@
 ﻿using GroceryMarketAPI.Classes;
+using GroceryMarketAPI.Mapper;
 using GroceryMarketAPI.ModelsDTO;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -17,28 +18,44 @@ namespace GroceryMarketTests
         [TestMethod]
         public void SetPricingReturnTrueWithProductsList()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),    
+                new ProductPriceCalculator(),    
+                new ProductMapper(),    
+                new DiscountMapper()
+            );
             Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos), true);
         }
 
         [TestMethod]
         public void SetPricingReturnTrueWithSingleProduct()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             Assert.AreEqual(terminal.SetPricing(_initDataRepository.ProductDto, _initDataRepository.DiscountDto), true);
         }
 
         [TestMethod]
         public void SetPricingReturnFalseWithNullValue()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             Assert.AreEqual(terminal.SetPricing(new List<ProductDto>(), null), false);
         }
 
         [TestMethod]
         public void ScanWorkingFine()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderABCDABA), true);
         }
@@ -46,7 +63,11 @@ namespace GroceryMarketTests
         [TestMethod]
         public void ScanReturnNullScanValue()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(string.Empty), false);
         }
@@ -54,7 +75,11 @@ namespace GroceryMarketTests
         [TestMethod]
         public void ScanReturnNullWithIncorrectOrder()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             Assert.AreEqual(terminal.Scan(_initDataRepository.OrderHHH), false);
         }
@@ -62,7 +87,11 @@ namespace GroceryMarketTests
         [TestMethod]
         public void CalculateTotalWorkingFine()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderCCCCCCC);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultCCCCCCC);
@@ -71,7 +100,11 @@ namespace GroceryMarketTests
         [TestMethod]
         public void CalculateTotalReturnZero()
         {
-            SaleTerminal terminal = new SaleTerminal();
+            SaleTerminal terminal = new SaleTerminal(new OrderScan(),
+                new ProductPriceCalculator(),
+                new ProductMapper(),
+                new DiscountMapper()
+            );
             terminal.SetPricing(_initDataRepository.ProductDtos, _initDataRepository.DiscountsDtos);
             terminal.Scan(_initDataRepository.OrderHHH);
             Assert.AreEqual(terminal.CalculateTotal(), _initDataRepository.ResultZero);

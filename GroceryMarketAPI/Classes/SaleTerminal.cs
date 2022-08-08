@@ -17,16 +17,20 @@ namespace GroceryMarketAPI.Classes
         private readonly MapperBase<Product, ProductDto> _productMapper;
         private readonly MapperBase<Discount, DiscountDto> _discountMapper;
 
-        public SaleTerminal()
+        public SaleTerminal(OrderScan orderScan, 
+            ProductPriceCalculator productPriceCalculator, 
+            ProductMapper productMapper,
+            DiscountMapper discountMapper)
         {
             _productsPrices = new List<Product>();
             _productsDiscounts = new List<Discount>();
             _order = "";
             _logger = LogManager.GetCurrentClassLogger();
-            _productCodeValidation = new OrderScan();
-            _productPriceCalculation = new ProductPriceCalculator();
-            _productMapper = new ProductMapper();
-            _discountMapper = new DiscountMapper();
+
+            _productCodeValidation = orderScan;
+            _productPriceCalculation = productPriceCalculator;
+            _productMapper = productMapper;
+            _discountMapper = discountMapper;
         }
 
         public double CalculateTotal()

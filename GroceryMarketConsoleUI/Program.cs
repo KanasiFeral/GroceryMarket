@@ -1,4 +1,5 @@
 ﻿using GroceryMarketAPI.Classes;
+using GroceryMarketAPI.Mapper;
 using GroceryMarketAPI.ModelsDTO;
 
 List<ProductDto> products = new()
@@ -43,7 +44,12 @@ ProductDto product = new()
     Price = 0.75
 };
 
-SaleTerminal terminal = new();
+SaleTerminal terminal = new(
+    new OrderScan(), 
+    new ProductPriceCalculator(), 
+    new ProductMapper(), 
+    new DiscountMapper()
+);
 
 terminal.SetPricing(product, null);
 terminal.SetPricing(products, discounts);
